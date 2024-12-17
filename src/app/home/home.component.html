@@ -1,16 +1,16 @@
 <app-main-content>
     <div class="w-screen overflow-x-auto">
         <div class="flex flex-shrink-0 flex-grow-0 flex-row px-4 gap-2">
-            @for (item of items; track $index) {
-                <div class="rounded-full bg-slate-800 text-white px-4 py-2 text-sm">
-                    TEDU400
+            @for (tag of tags; track $index) {
+                <div (click)="selectTag(tag)" [className]="'rounded-full  border px-4 py-2 text-sm hover:bg-slate-700 cursor-pointer hover:text-white ' + (!tag.selected ? 'border-slate-800 text-slate-800' : 'bg-slate-800 text-white') ">
+                    {{ tag.name}}
                 </div>
             }
         </div>
     </div>
     <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-10 px-4 py-4">
-        @for (item of items; track $index) {
-            <app-event-card></app-event-card>
+        @for (item of events; track $index) {
+            <app-event-card [event]="item"></app-event-card>
         }
     </div>
 </app-main-content>
