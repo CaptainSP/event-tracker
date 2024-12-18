@@ -1,0 +1,8 @@
+<app-main-content>
+    <div class="py-4 px-4 flex flex-col gap-4 min-h-screen">
+        <h1 class="text-xl">Event Prefrences</h1>
+        <p class="text-md">Please specify the types of events you would like to be notified about.</p>
+        <textarea [(ngModel)]="settingsText" class="textarea textarea-bordered" placeholder="Eg. I want events from my exams"></textarea>
+        <button type="button" (click)="submitText()" class="btn btn-primary w-min">Save</button>
+    </div>
+</app-main-content>

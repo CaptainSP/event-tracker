@@ -9,7 +9,7 @@
         </div>
     </div>
     <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-10 px-4 py-4">
-        @for (item of events; track $index) {
+        @for (item of filteredEvents; track $index) {
             <app-event-card [event]="item"></app-event-card>
         }
     </div>

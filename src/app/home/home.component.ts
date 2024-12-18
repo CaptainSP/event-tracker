@@ -60,6 +60,7 @@ export class HomeComponent implements OnInit {
 
   public tags: any[] = [];
   public events: any[] = [];
+  public filteredEvents: any[] = [];
   public loading = true;
 
   ngOnInit(): void {
@@ -79,8 +80,8 @@ export class HomeComponent implements OnInit {
               id: event[0],
               title: event[1],
               summary: event[2],
-              location: event[4],
-              startDate: event[5],
+              location: event[3],
+              startDate: event[4],
               endDate: event[5],
               priority: event[6],
               imageUrl: event[7],
@@ -93,6 +94,7 @@ export class HomeComponent implements OnInit {
               })
             };
           });
+          this.filteredEvents = this.events;
           this.loading = false;
         },
         error: (error) => {
@@ -124,5 +126,12 @@ export class HomeComponent implements OnInit {
 
   public selectTag(tag: any) {
     tag.selected = !tag.selected;
+    this.filteredEvents = this.events.filter((event) => {
+      const filterByTag = this.tags.filter((tag) => tag.selected).map((tag) => tag.id);
+      if (filterByTag.length === 0) {
+        return true;
+      }
+      return event.tags.some((tag:any) => filterByTag.includes(tag.id));
+    });
   }
 }

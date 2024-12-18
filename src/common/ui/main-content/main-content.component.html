@@ -1,4 +1,29 @@
 <app-navbar></app-navbar>
 <div>
-    <ng-content></ng-content>
+  <ng-content></ng-content>
 </div>
+<footer>
+  <div class="footer bg-white text-slate-800 w-full">
+    <div
+      class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 p-4 justify-around w-full"
+    >
+      <div>
+        <h1 class="text-xl">Event Tracker</h1>
+        <p class="text-md">A simple event tracker application.</p>
+      </div>
+      <div>
+        <h1 class="text-xl">Contact Us</h1>
+        <p class="text-md">Email: {{ "onmuapps@gmail.com" }}</p>
+        <p class="text-md">Phone: +234 810 000 0000</p>
+      </div>
+      <div>
+        <h1 class="text-xl">Pages</h1>
+        <div class="flex flex-row gap-4">
+          <a routerLink="/privacy-policy" class="btn btn-ghost"
+            >Privacy Policy</a
+          >
+        </div>
+      </div>
+    </div>
+  </div>
+</footer>
