@@ -16,7 +16,7 @@ export class SettingsComponent implements OnInit {
 
   public settingsText = '';
   ngOnInit(): void {
-    this.http.get('http://localhost:3000/settings', {
+    this.http.get('/settings', {
       headers: {
         Authorization: `Bearer ${this.authService.getToken()}`,
       },
@@ -26,7 +26,7 @@ export class SettingsComponent implements OnInit {
   }
 
   submitText() {
-    this.http.post('http://localhost:3000/settings', { settings: this.settingsText }, {
+    this.http.post('/settings', { settings: this.settingsText }, {
       headers: {
         Authorization: `Bearer ${this.authService.getToken()}`,
       },

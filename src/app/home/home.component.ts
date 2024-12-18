@@ -65,7 +65,7 @@ export class HomeComponent implements OnInit {
 
   ngOnInit(): void {
     this.http
-      .get('http://localhost:3000/events', {
+      .get('/events', {
         headers: {
           Authorization: `Bearer ${this.authService.getToken()}`,
         },
@@ -102,7 +102,7 @@ export class HomeComponent implements OnInit {
         },
       });
     this.http
-      .get('http://localhost:3000/tags', {
+      .get('/tags', {
         headers: {
           Authorization: `Bearer ${this.authService.getToken()}`,
         },
