@@ -1,16 +1,35 @@
 <app-main-content>
-    <div class="w-screen overflow-x-auto">
-        <div class="flex flex-shrink-0 flex-grow-0 flex-row px-4 gap-2">
-            @for (tag of tags; track $index) {
-                <div (click)="selectTag(tag)" [className]="'rounded-full  border px-4 py-2 text-sm hover:bg-slate-700 cursor-pointer hover:text-white ' + (!tag.selected ? 'border-slate-800 text-slate-800' : 'bg-slate-800 text-white') ">
-                    {{ tag.name}}
-                </div>
-            }
-        </div>
+  <div class="w-screen overflow-x-auto">
+    @if (!events.length) {
+    <div class="min-h-screen flex justify-center items-center">
+      <div class="flex flex-col gap-4 items-center">
+        <h1 class="text-3xl">No events found</h1>
+        <p class="text-xl">
+          There are no events to display at the moment. Please check back later.
+        </p>
+      </div>
     </div>
-    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-10 px-4 py-4">
-        @for (item of filteredEvents; track $index) {
-            <app-event-card [event]="item"></app-event-card>
-        }
+    } @else {
+    <div class="flex flex-shrink-0 flex-grow-0 flex-row px-4 gap-2">
+      @for (tag of tags; track $index) {
+      <div
+        (click)="selectTag(tag)"
+        [className]="
+          'rounded-full  border px-4 py-2 text-sm hover:bg-slate-700 cursor-pointer hover:text-white ' +
+          (!tag.selected
+            ? 'border-slate-800 text-slate-800'
+            : 'bg-slate-800 text-white')
+        "
+      >
+        {{ tag.name }}
+      </div>
+      }
     </div>
+    }
+  </div>
+  <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-10 px-4 py-4">
+    @for (item of filteredEvents; track $index) {
+    <app-event-card [event]="item"></app-event-card>
+    }
+  </div>
 </app-main-content>
